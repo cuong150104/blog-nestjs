@@ -1,6 +1,6 @@
 
 import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { registerUserDto } from './dto/register-user.dto';
+import { RegisterUserDto } from './dto/register-user.dto';
 import { User } from 'src/user/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthService } from './auth.service';
@@ -11,7 +11,7 @@ export class AuthController {
     constructor(private authService: AuthService) { }
 
     @Post('register')
-    register(@Body() registerUserDto: registerUserDto): Promise<User> {
+    register(@Body() registerUserDto: RegisterUserDto): Promise<User> {
         console.log("register api");
         console.log(registerUserDto);
         return this.authService.register(registerUserDto);

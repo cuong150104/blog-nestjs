@@ -1,5 +1,5 @@
 import { LoginUserDto } from './dto/login-user.dto';
-import { registerUserDto } from './dto/register-user.dto';
+import { RegisterUserDto } from './dto/register-user.dto';
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/user/entities/user.entity';
@@ -16,7 +16,7 @@ export class AuthService {
         private configService: ConfigService
     ) { }
 
-    async register(registerUserDto: registerUserDto): Promise<User> {
+    async register(registerUserDto: RegisterUserDto): Promise<User> {
         const hashPassword = await this.hashPassword(registerUserDto.password);
 
         return await this.userRepository.save({ ...registerUserDto, refresh_token: "refresh_token_string", password: hashPassword });
