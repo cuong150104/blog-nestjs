@@ -73,6 +73,7 @@ export class UserController {
             }
 
         }))
+        
     uploadAvatar(@Req() req: any, @UploadedFile() file: Express.Multer.File) {
         console.log("upload avatar")
         console.log("user data", req.user_data)
