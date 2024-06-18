@@ -6,6 +6,7 @@ import { DeleteResult, Like, Repository, UpdateResult } from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { FilterPostDto } from './dto/filter-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { Category } from 'src/category/entities/category.entity';
 
 @Injectable()
 export class PostService {
@@ -30,20 +31,37 @@ export class PostService {
         const items_per_page = Number(query.items_per_page) || 10;
         const page = Number(query.page) || 1;
         const skip = (page - 1) * items_per_page;
-
+        const category = Number(query.category) || null;
         const keyword = query.search || '';
         const [res, total] = await this.postRepository.findAndCount({
             where: [
-                { title: Like('%' + keyword + '%') },
-                { description: Like('%' + keyword + '%') }
+                {
+                    title: Like('%' + keyword + '%'),
+                    category: {
+                        id: category
+                    }
+                },
+
+                {
+                    description: Like('%' + keyword + '%'),
+                    category: {
+                        id: category
+                    }
+                }
+
             ],
             order: { created_at: "DESC" },
             take: items_per_page,
             skip: skip,
             relations: {
-                user: true
+                user: true,
+                category: true,
             },
             select: {
+                category: {
+                    id: true,
+                    name: true
+                },
                 user: {
                     id: true,
                     first_name: true,
@@ -70,8 +88,12 @@ export class PostService {
     async findDetail(id: number): Promise<Post> {
         return await this.postRepository.findOne({
             where: { id },
-            relations: ['user'],
+            relations: ['user', 'category'],
             select: {
+                category: {
+                    id: true,
+                    name: true
+                },
                 user: {
                     id: true,
                     first_name: true,
