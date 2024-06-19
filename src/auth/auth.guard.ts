@@ -1,13 +1,34 @@
 import { CanActivate, ExecutionContext, HttpException, Injectable, UnauthorizedException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
+import { Reflector } from "@nestjs/core";
 import { JwtService } from "@nestjs/jwt";
+import { InjectRepository } from "@nestjs/typeorm";
 import { Request } from 'express';
+import { User } from "src/user/entities/user.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-    constructor(private jwtService: JwtService, private configService: ConfigService) { }
+    constructor(
+        private jwtService: JwtService,
+        private configService: ConfigService,
+        @InjectRepository(User) private userRepository: Repository<User>,
+        private reflector: Reflector
+    ) { }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
+
+        console.log("vao AuthGuard ====> set user");
+
+        const isPublic = this.reflector.getAllAndOverride<string[]>('isPublic', [
+            context.getHandler(),
+            context.getClass()
+        ])
+        if (isPublic) {
+            return true;
+        }
+        console.log("isPublic => ", isPublic);
+
         const request = context.switchToHttp().getRequest();
         const token = this.extractTokenFromHeader(request);
         if (!token) {
@@ -18,6 +39,8 @@ export class AuthGuard implements CanActivate {
             const payload = await this.jwtService.verifyAsync(token, {
                 secret: this.configService.get<string>('SECRET')
             })
+            const user = await this.userRepository.findOneBy({ id: payload.id });
+            request['user'] = user;
             request['user_data'] = payload;
         } catch {
             throw new HttpException({

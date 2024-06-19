@@ -23,14 +23,17 @@ export class User {
     @Column()
     password: string;
 
-    @Column({nullable: true, default: null})
+    @Column({ nullable: true, default: null })
     refresh_token: string;
 
-    @Column({nullable: true, default: null})
+    @Column({ nullable: true, default: null })
     avatar: string;
-    
+
     @Column({ default: 1 })
     status: number;
+
+    @Column({ default: 'User' })
+    roles: string;
 
     @CreateDateColumn()
     create_at: Date;
