@@ -89,7 +89,7 @@ export class PostController {
         }
 
         if (file) {
-            updatePostDto.thumbnail = file.destination + '/' + file.filename;
+            updatePostDto.thumbnail =  'post/' + file.filename;
         }
 
         return this.postService.update(Number(id), updatePostDto);
