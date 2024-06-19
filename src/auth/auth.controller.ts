@@ -24,9 +24,8 @@ export class AuthController {
     @ApiResponse({status:401, description:'Login fail!'})
     @UsePipes(ValidationPipe)
     login(@Body() loginUserDto: LoginUserDto): Promise<any> {
-        console.log('login api');
+        // console.log('login api');
         console.log(loginUserDto);
-
         return this.authService.login(loginUserDto);
     }
 

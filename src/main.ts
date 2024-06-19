@@ -1,11 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { join } from 'path';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  //tạo thay thế cho posman
+  // Create Swagger configuration for API documentation
   const config = new DocumentBuilder()
     .setTitle('Blog APIs')
     .setDescription('List APIs for simple Blog by NDC')
@@ -14,9 +16,14 @@ async function bootstrap() {
     .addTag('Users')
     .addBearerAuth()
     .build();
-  const documnent = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documnent);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+
   app.enableCors();
+
+  // Serve static files from the 'uploads' directory
+  app.useStaticAssets(join(__dirname, '../../uploads'));
+
   await app.listen(5000);
 }
 bootstrap();

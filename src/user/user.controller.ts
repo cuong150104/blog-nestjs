@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Param, ParseArrayPipe, Post, Put, Query, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { User } from './entities/user.entity';
 import { UserService } from './user.service';
@@ -27,6 +27,12 @@ export class UserController {
     }
 
     @UseGuards(AuthGuard)
+    @Get('profile')
+    profile(@Req() req: any): Promise<User> {
+       return this.userService.findOne(Number(req.user_data.id))
+    }
+
+    @UseGuards(AuthGuard)
     @Get(':id')
     findOne(@Param('id') id: string): Promise<User> {
         return this.userService.findOne(Number(id));
@@ -43,6 +49,14 @@ export class UserController {
     update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
         return this.userService.update(Number(id), updateUserDto);
     }
+
+    // @UseGuards(AuthGuard)
+    @Delete('multiple')
+    multipleDelete(@Query('ids', new ParseArrayPipe({ items: String, separator: ',' })) ids: string[]) {
+        console.log("delete multi=> ", ids)
+        return this.userService.multipleDelete(ids)
+    }
+
 
     @UseGuards(AuthGuard)
     @Delete(':id')
@@ -73,7 +87,7 @@ export class UserController {
             }
 
         }))
-        
+
     uploadAvatar(@Req() req: any, @UploadedFile() file: Express.Multer.File) {
         console.log("upload avatar")
         console.log("user data", req.user_data)
@@ -86,7 +100,7 @@ export class UserController {
         if (!file) {
             throw new BadRequestException('File is required');
         }
-       return this.userService.updateAvatar(req.user_data.id, file.destination + '/' + file.filename);
+        return this.userService.updateAvatar(req.user_data.id, file.destination + '/' + file.filename);
     }
 
 

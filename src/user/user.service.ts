@@ -2,7 +2,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
-import { DeleteResult, Like, Repository, UpdateResult } from 'typeorm';
+import { DeleteResult, In, Like, Repository, UpdateResult } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 import { FilterUserDto } from './dto/filter-user.dto';
@@ -49,7 +49,7 @@ export class UserService {
     async create(createUserDto: CreateUserDto): Promise<User> {
         const hashPassword = await bcrypt.hash(createUserDto.password, 10);
 
-        return await this.userRepository.save(createUserDto);
+        return await this.userRepository.save({ ...createUserDto, password: hashPassword });
     }
 
     async update(id: number, updateUserDto: UpdateUserDto): Promise<UpdateResult> {
@@ -62,5 +62,9 @@ export class UserService {
 
     async updateAvatar(id: number, avatar: string): Promise<UpdateResult> {
         return await this.userRepository.update(id, { avatar });
+    }
+
+    async multipleDelete(ids: string[]): Promise<DeleteResult> {
+        return await this.userRepository.delete({ id: In(ids) })
     }
 }
