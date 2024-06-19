@@ -100,7 +100,8 @@ export class UserController {
         if (!file) {
             throw new BadRequestException('File is required');
         }
-        return this.userService.updateAvatar(req.user_data.id, file.destination + '/' + file.filename);
+        const parts = file.destination.split('/');
+        return this.userService.updateAvatar(req.user_data.id, parts[1] + '/' + file.filename);
     }
 
 
