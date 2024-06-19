@@ -5,10 +5,12 @@ import { User } from "src/user/entities/user.entity";
 export class CreatePostDto {
     @IsNotEmpty()
     title: string;
-    
+
     @IsNotEmpty()
     description: string;
 
+    summary: string;
+    
     thumbnail: string;
 
     status: number;
