@@ -61,6 +61,23 @@ export class AuthService {
     }
 
     private async generateToke(payload: { id: number; email: string; }) {
+
+
+        const user = await this.userRepository.findOne({ where: { email: payload.email } });
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        // Thêm thông tin vào payload
+        const userData = {
+            id: payload.id,
+            email: payload.email,
+            first_name: user.first_name, // Giả sử bạn muốn thêm username
+            last_name: user.last_name,
+            roles: user.roles
+        };
+
+        console.log("user => ",userData )
         const access_token = await this.JwtService.signAsync(payload);
 
         const refresh_token = await this.JwtService.signAsync(payload, {
@@ -73,7 +90,7 @@ export class AuthService {
             { refresh_token: refresh_token }
         );
 
-        return { access_token, refresh_token };
+        return { access_token, refresh_token, userData };
     }
 
     private async hashPassword(password: string): Promise<string> {

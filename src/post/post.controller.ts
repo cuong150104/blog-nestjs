@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Post, Query, Req, UploadedFile, UseGuards, UseInterceptors, Get, Param, Put, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Post, Query, Req, UploadedFile, UseGuards, UseInterceptors, Get, Param, Put, Delete, UsePipes, ValidationPipe, SetMetadata } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storageConfig } from 'helpers/config';
@@ -8,9 +8,11 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { FilterPostDto } from './dto/filter-post.dto';
 import { Post as PostEntity } from './entities/post.entity';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { Public } from '../decorator/public.decorator';
 @Controller('posts')
 export class PostController {
     constructor(private postService: PostService) { }
+
     @UseGuards(AuthGuard)
     @UsePipes(ValidationPipe)
     @Post()
@@ -49,17 +51,20 @@ export class PostController {
         return this.postService.create(req['user_data'].id, { ...createPostDto, thumbnail: 'post/' + file.filename });
     }
 
-    @UseGuards(AuthGuard)
+    @SetMetadata('roles', ['Admin', 'User'])
     @Get()
     findAll(@Query() query: FilterPostDto): Promise<any> {
         return this.postService.findAll(query);
     }
 
-    @UseGuards(AuthGuard)
+
     @Get(':id')
+    @Public()
     findDetail(@Param('id') id: string): Promise<PostEntity> {
         return this.postService.findDetail(Number(id));
     }
+
+
 
     @UseGuards(AuthGuard)
     @Put(':id')
@@ -101,32 +106,33 @@ export class PostController {
         return this.postService.delete(Number(id));
     }
 
+
     @Post('cke-upload')
     @UseInterceptors(FileInterceptor('upload', {
         storage: storageConfig('ckeditor'),
         fileFilter: (req, file, cb) => {
-          const ext = extname(file.originalname);
-          const allowedExtArr = ['.jpg', '.png', '.jpeg'];
-          if (!allowedExtArr.includes(ext)) {
-            req.fileValidationError = `Wrong extension type. Accepted file ext are: ${allowedExtArr.toString()}`;
-            cb(null, false);
-          } else {
-            const fileSize = parseInt(req.headers['content-length']);
-            if (fileSize > 1024 * 1024 * 5) {
-              req.fileValidationError = 'File size is too large. Accepted file size is less than 5 MB';
-              cb(null, false);
+            const ext = extname(file.originalname);
+            const allowedExtArr = ['.jpg', '.png', '.jpeg'];
+            if (!allowedExtArr.includes(ext)) {
+                req.fileValidationError = `Wrong extension type. Accepted file ext are: ${allowedExtArr.toString()}`;
+                cb(null, false);
             } else {
-              cb(null, true);
+                const fileSize = parseInt(req.headers['content-length']);
+                if (fileSize > 1024 * 1024 * 5) {
+                    req.fileValidationError = 'File size is too large. Accepted file size is less than 5 MB';
+                    cb(null, false);
+                } else {
+                    cb(null, true);
+                }
             }
-          }
         }
-      }))
-      ckeUpload(@Body() data: any, @UploadedFile() file: Express.Multer.File) {
+    }))
+    ckeUpload(@Body() data: any, @UploadedFile() file: Express.Multer.File) {
         console.log(data, '=>', data);
         console.log(file);
         return {
-          'url': `ckeditor/${file.filename}`
+            'url': `ckeditor/${file.filename}`
         }
-      }
-      
+    }
+
 }

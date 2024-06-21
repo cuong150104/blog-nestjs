@@ -9,7 +9,6 @@ import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storageConfig } from 'helpers/config';
 import { extname } from 'path';
-import { Roles } from 'src/auth/decorator/roles.decorator';
 
 @ApiBearerAuth()
 @ApiTags('Users')
@@ -18,7 +17,7 @@ export class UserController {
     constructor(private userService: UserService) { }
 
 
-    @Roles('Admin')
+    @SetMetadata('roles', ['Admin'])
     @ApiQuery({ name: 'page' })
     @ApiQuery({ name: 'items_per_page' })
     @ApiQuery({ name: 'search' })

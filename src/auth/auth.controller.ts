@@ -5,7 +5,7 @@ import { User } from 'src/user/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthService } from './auth.service';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Public } from './decorator/public.decorator';
+import { Public } from '../decorator/public.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')
