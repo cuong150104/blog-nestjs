@@ -9,6 +9,7 @@ import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storageConfig } from 'helpers/config';
 import { extname } from 'path';
+import { Public } from '../decorator/public.decorator';
 
 @ApiBearerAuth()
 @ApiTags('Users')
@@ -28,12 +29,14 @@ export class UserController {
     }
 
 
+
+
     @Get('profile')
     profile(@Req() req: any): Promise<User> {
         return this.userService.findOne(Number(req.user_data.id))
     }
 
-    @SetMetadata('roles', ['Admin'])
+    @SetMetadata('roles', ['Admin','User'])
     @Get(':id')
     findOne(@Param('id') id: string): Promise<User> {
         return this.userService.findOne(Number(id));

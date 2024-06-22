@@ -57,6 +57,13 @@ export class PostController {
         return this.postService.findAll(query);
     }
 
+    @Public()
+    @Get('post-by-user/:id')
+    postByUser(@Param('id') id: string, @Query() query: FilterPostDto): Promise<any> {
+        return this.postService.postByUser(Number(id),query);
+    }
+
+
 
     @Get(':id')
     @Public()
@@ -108,6 +115,7 @@ export class PostController {
 
 
     @Post('cke-upload')
+    @Public()
     @UseInterceptors(FileInterceptor('upload', {
         storage: storageConfig('ckeditor'),
         fileFilter: (req, file, cb) => {

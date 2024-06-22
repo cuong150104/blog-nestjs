@@ -12,6 +12,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './auth/roles.guard';
 import { AuthGuard } from './auth/auth.guard';
 import { User } from './user/entities/user.entity';
+import { FollowersModule } from './follower/follower.module';
+import { CommentModule } from './comment/comment.module';
+
 @Module({
 
   imports: [TypeOrmModule.forRoot(dataSourceOptions),
@@ -20,7 +23,10 @@ import { User } from './user/entities/user.entity';
   ConfigModule.forRoot(),
     PostModule,
     CategoryModule,
-    TypeOrmModule.forFeature([User])
+    TypeOrmModule.forFeature([User]),
+    FollowersModule,
+    CommentModule,
+  
   ],
   controllers: [AppController],
   providers: [AppService,
