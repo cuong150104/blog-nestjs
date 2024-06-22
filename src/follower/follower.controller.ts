@@ -1,6 +1,7 @@
 import { Controller, Post, Delete, Param, SetMetadata, Get, Query } from '@nestjs/common';
 import { FollowersService } from './follower.service';
 import { Follower } from './entities/follower.entity';
+import { Public } from 'src/decorator/public.decorator';
 
 
 @Controller('followers')
@@ -25,7 +26,7 @@ export class FollowersController {
         return this.followersService.unfollowUser(followerId, followedId);
     }
 
-    @SetMetadata('roles', ['User'])
+    @Public()
     @Get(':followerId/:followedId')
     async isFollowing(
         @Param('followerId') followerId: number,
@@ -34,9 +35,10 @@ export class FollowersController {
         return this.followersService.isFollowing(followerId, followedId);
     }
 
-    @SetMetadata('roles', ['User'])
+    @Public()
     @Get('all/:followerId')
-    findAll(@Param('followerId') followerId: number,): Promise<Follower[]> {
-        return this.followersService.findAll(followerId);
+    async findAll(@Param('followerId') followerId: string): Promise<number> {
+        console.log("check ddddddddddddddddddd")
+        return this.followersService.findAll(Number(followerId));
     }
 }

@@ -49,9 +49,11 @@ export class FollowersService {
     return !!existingFollow; // Trả về true nếu tồn tại, ngược lại trả về false
   }
 
-  async findAll(followerId: number): Promise<Follower[]> {
-    return await this.followersRepository.find({
-      where: { id: followerId }
+  async findAll(followerId: number): Promise<number> {
+
+    const [votes, count] = await this.followersRepository.findAndCount({
+      where: { follower_id: followerId }
     });
+    return count;
   }
 }

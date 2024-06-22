@@ -1,73 +1,119 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Project Title: Xây dựng website Blog tương tự Viblo
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### Purpose of the project
+The purpose of a web blog project similar to Viblo is to create a platform where users can share knowledge, insights, and experiences related to technology, programming, and software development, fostering a community of learning and collaboration among tech enthusiasts.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## What to prepare
+Install mySQL, nestjs, reactjs,XAMP...
 
-## Installation
 
-```bash
-$ npm install
-```
+### Technology and tools used
+- Technology and Tools Used
+- Programming Software: Visual Studio Code
+- Web Server: XAMPP
+- Source Code Management: GitHub
+- Tool for Designing Object-Oriented Design and Analysis Diagrams: diagrams.net
+- Front-End Development:
+-    Languages: HTML, CSS, JavaScript
+-    Frameworks: React.js, SCSS
+- Back-End Development:
+-    Language: JavaScript
+-    Framework: NestJS
+- Database Design Software: MySQL
+- Authentication and Authorization: JWT
+## How to run
+After cloning the project and opening the solution file, you will see the project folder structure like this:
+![alt text](image/image.png)
+- BackEnd - FrontEnd
+![alt text](image-9.png)
 
-## Running the app
+- src
+![alt text](image.png)
 
-```bash
-# development
-$ npm run start
+auth:
+![alt text](image-1.png)
 
-# watch mode
-$ npm run start:dev
+-category
+![alt text](image-2.png)
 
-# production mode
-$ npm run start:prod
-```
+-comment
+![alt text](image-3.png)
 
-## Test
+-follower
+![alt text](image-4.png)
 
-```bash
-# unit tests
-$ npm run test
+-post
+![alt text](image-5.png)
 
-# e2e tests
-$ npm run test:e2e
+-user
+![alt text](image-6.png)
 
-# test coverage
-$ npm run test:cov
-```
+-vote : Vote up/vote down bài viết
+![alt text](image-7.png)
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Databases
+![alt text](image-10.png)
+## Usecase diagram
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## ALGORITHM ANALYSIS
+- Search and filtering algorithm
 
-## License
 
-Nest is [MIT licensed](LICENSE).
+## Features
+### Login function
+- Admin/User enters login name and password, the system will check the database and then respond to admin/user.
+- If there is no account with the corresponding login name and password, the system will report an error of incorrect login name or password.
+### Search - booking function
+- For clients:
+   + Enter personal information, then the system will retrieve the data and display appropriate search results
+   + Client can click on the desired result to see detailed information
+   + Fill in personal information and press the "Book" button to reserve a room
+### Management function
+#### Admin Functions
+- User Registration and Login:
+
+Manage user accounts, including registration and authentication.
+Approve or reject user registrations.
+Reset passwords for users.
+- Write Article:
+
+Create and publish articles.
+Edit or delete any article.
+- View Articles:
+
+View all published articles.
+Monitor article statistics and metrics.
+
+#### Client Functions
+- User Registration and Login:
+
+Register a new account.
+Log in to an existing account.
+- Write Article:
+
+Create and publish their own articles.
+Edit or delete their own articles.
+- View Articles:
+
+Browse and read all published articles.
+Search for specific articles by keywords or categories.
+- Comment on Articles:
+
+Post comments on articles.
+Edit or delete their own comments.
+- Follow Users:
+
+Follow other users to receive updates on their new articles.
+Unfollow users as desired.
+- Vote Up/Vote Down Articles:
+
+Vote up or vote down articles.
+View the voting score for articles.
+## Program interface
+- Testing various scenarios such as system login, data entry/view, search and statistics functions, and query/report functions.
+- Evaluation of the system's performance and user feedback.
+

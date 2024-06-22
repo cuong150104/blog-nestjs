@@ -36,7 +36,7 @@ export class UserController {
         return this.userService.findOne(Number(req.user_data.id))
     }
 
-    @SetMetadata('roles', ['Admin','User'])
+    @Public()
     @Get(':id')
     findOne(@Param('id') id: string): Promise<User> {
         return this.userService.findOne(Number(id));
@@ -90,6 +90,7 @@ export class UserController {
             }
 
         }))
+
 
     uploadAvatar(@Req() req: any, @UploadedFile() file: Express.Multer.File) {
         console.log("upload avatar")

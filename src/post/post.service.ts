@@ -1,4 +1,4 @@
-import { HttpStatus, Injectable, Module } from '@nestjs/common';
+import { HttpStatus, Injectable, Module, NotFoundException } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { Post } from './entities/post.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -193,4 +193,32 @@ export class PostService {
         }
     }
 
+    async findOneVote(id: number): Promise<Post> {
+        const post = await this.postRepository.findOne(
+            {
+                where: { id: id }
+            }
+        );
+        if (!post) {
+            throw new NotFoundException(`Post with ID ${id} not found`);
+        }
+        return post;
+    }
+
+    async voteUp(id: number): Promise<Post> {
+        const post = await this.findOneVote(id);
+        post.votes += 1;
+        return this.postRepository.save(post);
+    }
+
+    async voteDown(id: number): Promise<Post> {
+        const post = await this.findOneVote(id);
+        post.votes -= 1;
+        return this.postRepository.save(post);
+    }
+
+    async getVotes(id: number): Promise<number> {
+        const post = await this.findOneVote(id);
+        return post.votes;
+    }
 }

@@ -13,7 +13,7 @@ import { Public } from '../decorator/public.decorator';
 export class PostController {
     constructor(private postService: PostService) { }
 
-    @UseGuards(AuthGuard)
+    @SetMetadata('roles', ['Admin','User'])
     @UsePipes(ValidationPipe)
     @Post()
     @UseInterceptors(FileInterceptor('thumbnail',
@@ -51,7 +51,7 @@ export class PostController {
         return this.postService.create(req['user_data'].id, { ...createPostDto, thumbnail: 'post/' + file.filename });
     }
 
-    @SetMetadata('roles', ['Admin', 'User'])
+    @Public()
     @Get()
     findAll(@Query() query: FilterPostDto): Promise<any> {
         return this.postService.findAll(query);
@@ -60,20 +60,20 @@ export class PostController {
     @Public()
     @Get('post-by-user/:id')
     postByUser(@Param('id') id: string, @Query() query: FilterPostDto): Promise<any> {
-        return this.postService.postByUser(Number(id),query);
+        return this.postService.postByUser(Number(id), query);
     }
 
 
 
-    @Get(':id')
     @Public()
+    @Get(':id')
     findDetail(@Param('id') id: string): Promise<PostEntity> {
         return this.postService.findDetail(Number(id));
     }
 
 
 
-    @UseGuards(AuthGuard)
+    @Public()
     @Put(':id')
     @UseInterceptors(FileInterceptor('thumbnail',
         {
@@ -107,15 +107,15 @@ export class PostController {
         return this.postService.update(Number(id), updatePostDto);
     }
 
-    @UseGuards(AuthGuard)
+    @SetMetadata('roles', ['Admin','User'])
     @Delete(':id')
     delete(@Param('id') id: string) {
         return this.postService.delete(Number(id));
     }
 
 
-    @Post('cke-upload')
     @Public()
+    @Post('cke-upload')
     @UseInterceptors(FileInterceptor('upload', {
         storage: storageConfig('ckeditor'),
         fileFilter: (req, file, cb) => {
@@ -143,4 +143,24 @@ export class PostController {
         }
     }
 
+    @SetMetadata('roles', ['Admin','User'])
+    @Post(':id/vote-up')
+    voteUp(@Param('id') id: number) {
+        return this.postService.voteUp(Number(id));
+    }
+
+
+    @SetMetadata('roles', ['Admin','User'])
+    @Post(':id/vote-down')
+    voteDown(@Param('id') id: number) {
+        return this.postService.voteDown(Number(id));
+    }
+
+
+    @Public()
+    @Get(':id/votes')
+    async getVotes(@Param('id') id: number) {
+        const votes = await this.postService.getVotes(Number(id));
+        return { votes };
+    }
 }

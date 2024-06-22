@@ -1,6 +1,8 @@
 import { Post } from 'src/post/entities/post.entity';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from 'typeorm';
-import {Comment} from 'src/comment/entities/comment.entity';
+import { Comment } from 'src/comment/entities/comment.entity';
+import { Vote } from 'src/vote/entities/vote.entity';
+
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
@@ -42,5 +44,6 @@ export class User {
     @OneToMany(() => Comment, (comment) => comment.user)
     comments: Comment[]
 
- 
+    @OneToMany(() => Vote, (vote) => vote.user)
+    votesList: Vote[]
 }

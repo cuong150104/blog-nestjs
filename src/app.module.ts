@@ -14,6 +14,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { User } from './user/entities/user.entity';
 import { FollowersModule } from './follower/follower.module';
 import { CommentModule } from './comment/comment.module';
+import { VoteModule } from './vote/vote.module';
 
 @Module({
 
@@ -26,6 +27,7 @@ import { CommentModule } from './comment/comment.module';
     TypeOrmModule.forFeature([User]),
     FollowersModule,
     CommentModule,
+    VoteModule,
   
   ],
   controllers: [AppController],
