@@ -23,45 +23,30 @@ Install mySQL, nestjs, reactjs,XAMP...
 -    Framework: NestJS
 - Database Design Software: MySQL
 - Authentication and Authorization: JWT
-## How to run
-After cloning the project and opening the solution file, you will see the project folder structure like this:
-![alt text](image/image.png)
-- BackEnd - FrontEnd
-![alt text](image/image-9.png)
-
-- src
-![alt text](image/image.png)
-
-auth:
-![alt text](image/image-1.png)
-
--category
-![alt text](image/image-2.png)
-
--comment
-![alt text](image/image-3.png)
-
--follower
-![alt text](image/image-4.png)
-
--post
-![alt text](image/image-5.png)
-
--user
-![alt text](image/image-6.png)
-
--vote : Vote up/vote down bài viết
-![alt text](image/image-7.png)
-
-
-## Databases
-![alt text](image/image-10.png)
 ## Usecase diagram
 ![alt text](image/image-12.png)
+## Databases
+![alt text](image/image-10.png)
+## How to run
+After cloning the project and opening the solution file, you will see the project folder structure like this:
+
+![alt text](image-15.png)
+
+
+- BackEnd-FrontEnd
+![alt text](image/image-9.png)
+
+
+- BackEnd
+![alt text](image/image.png)
+![alt text](image/image-16.png)
+- FrondEnd
+![alt text](image/image-17.png)
+![alt text](image/image-18.png)
+
 
 ## ALGORITHM ANALYSIS
 - Search and filtering algorithm
-
 
 ## Features
 ### Login function
@@ -117,3 +102,13 @@ View the voting score for articles.
 - Testing various scenarios such as system login, data entry/view, search and statistics functions, and query/report functions.
 - Evaluation of the system's performance and user feedback.
 
+
+# Kịch bản 1 - Đăng nhập hệ thống
+
+![alt text](image/image-19.png)
+
+# Kich bản 2 - Giao diện người dùng
+## Giao Diện Client:
+![alt text](image/image-20.png)
+## Giao diện cho Admin:
+![alt text](image/image-21.png)
