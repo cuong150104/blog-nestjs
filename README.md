@@ -24,13 +24,13 @@ Install mySQL, nestjs, reactjs,XAMP...
 - Database Design Software: MySQL
 - Authentication and Authorization: JWT
 ## Usecase diagram
-![alt text](image/image-12.png)
+![alt text](image/image-22.png)
 ## Databases
 ![alt text](image/image-10.png)
 ## How to run
 After cloning the project and opening the solution file, you will see the project folder structure like this:
 
-![alt text](image-15.png)
+![alt text](image/image-15.png)
 
 
 - BackEnd-FrontEnd
@@ -112,3 +112,49 @@ View the voting score for articles.
 ![alt text](image/image-20.png)
 ## Giao diện cho Admin:
 ![alt text](image/image-21.png)
+
+# Kịch bản 3 - Chức năng Chi tiết
+## Đối với Client:
+- Xem bài viết
+![alt text](image/image-23.png)
+
+-Chức năng hiện thị bài viết của mình:
+
+![alt text](image/image-24.png)
+
+-Chức năng viết bài:
+![alt text](image/image-25.png)
+
+-Chức năng Update post:
+![alt text](image/image-26.png)
+
+-Chức năng delete post:
+![alt text](image/image-27.png)
+
+- Chức năng comment:
+![alt text](image/image-28.png)
+
+-Chức năng follow:
+![alt text](image/image-29.png)
+
+-Chức năng  vote up/ vote dơn bài viết:
+![alt text](image/image-30.png)
+
+## Đối với Admin
+- Chức năng thêm User:
+![alt text](image/image-31.png)
+
+- Chức năng List Users:
+![alt text](image/image-32.png)
+
+- Chức năng xóa User:
+![alt text](image/image-33.png)
+
+-Chức năng add Post:
+![alt text](image/image-34.png)
+
+-Chức năng List Post:
+![alt text](image/image-35.png)
+
+-chức năng profile:
+![alt text](image/image-36.png)
