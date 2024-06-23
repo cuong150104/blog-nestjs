@@ -25,39 +25,39 @@ Install mySQL, nestjs, reactjs,XAMP...
 - Authentication and Authorization: JWT
 ## How to run
 After cloning the project and opening the solution file, you will see the project folder structure like this:
-![alt text](image/image.png)
+![alt text](mage/image.png)
 - BackEnd - FrontEnd
-![alt text](image-9.png)
+![alt text](mage/image-9.png)
 
 - src
-![alt text](image.png)
+![alt text](mage/image.png)
 
 auth:
-![alt text](image-1.png)
+![alt text](mage/image-1.png)
 
 -category
-![alt text](image-2.png)
+![alt text](mage/image-2.png)
 
 -comment
-![alt text](image-3.png)
+![alt text](mage/image-3.png)
 
 -follower
-![alt text](image-4.png)
+![alt text](mage/image-4.png)
 
 -post
-![alt text](image-5.png)
+![alt text](mage/image-5.png)
 
 -user
-![alt text](image-6.png)
+![alt text](mage/image-6.png)
 
 -vote : Vote up/vote down bài viết
-![alt text](image-7.png)
+![alt text](mage/image-7.png)
 
 
 ## Databases
-![alt text](image-10.png)
+![alt text](mage/image-10.png)
 ## Usecase diagram
-
+![alt text](mage/image-12.png)
 
 ## ALGORITHM ANALYSIS
 - Search and filtering algorithm
