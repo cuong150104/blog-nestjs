@@ -14,25 +14,19 @@ export class FollowersController {
         @Param('followerId') followerId: number,
         @Param('followedId') followedId: number,
     ) {
+        console.log("check ddddddddddddddddddd 1")
         return this.followersService.followUser(followerId, followedId);
     }
 
     @SetMetadata('roles', ['User'])
     @Delete(':followerId/:followedId')
     async unfollowUser(
+
         @Param('followerId') followerId: string,
         @Param('followedId') followedId: string,
     ) {
+        console.log("check ddddddddddddddddddd 2")
         return this.followersService.unfollowUser(followerId, followedId);
-    }
-
-    @Public()
-    @Get(':followerId/:followedId')
-    async isFollowing(
-        @Param('followerId') followerId: number,
-        @Param('followedId') followedId: number,
-    ): Promise<boolean> {
-        return this.followersService.isFollowing(followerId, followedId);
     }
 
     @Public()
@@ -41,4 +35,16 @@ export class FollowersController {
         console.log("check ddddddddddddddddddd")
         return this.followersService.findAll(Number(followerId));
     }
+
+    @Public()
+    @Get(':followerId/:followedId')
+    async isFollowing(
+        @Param('followerId') followerId: number,
+        @Param('followedId') followedId: number,
+    ): Promise<boolean> {
+        console.log("check ddddddddddddddddddd e")
+        return this.followersService.isFollowing(followerId, followedId);
+    }
+
+ 
 }

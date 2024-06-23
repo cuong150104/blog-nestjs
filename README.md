@@ -27,6 +27,11 @@ Install mySQL, nestjs, reactjs,XAMP...
 ![alt text](image/image-22.png)
 ## Databases
 ![alt text](image/image-10.png)
+## test Api by Postman
+![alt text](image/image-38.png)
+
+## DataBase XMAP
+![alt text](image/image-39.png)
 ## How to run
 After cloning the project and opening the solution file, you will see the project folder structure like this:
 
@@ -131,7 +136,10 @@ View the voting score for articles.
 - Chức năng delete post:
 ![alt text](image/image-27.png)
 
-- Chức năng comment:
+- Chức năng update profile:
+![alt text](image/image-37.png)
+
+- Chức năng comment: 
 ![alt text](image/image-28.png)
 
 - Chức năng follow:

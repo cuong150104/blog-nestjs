@@ -52,8 +52,9 @@ export class FollowersService {
   async findAll(followerId: number): Promise<number> {
 
     const [votes, count] = await this.followersRepository.findAndCount({
-      where: { follower_id: followerId }
+      where: { followed_id: followerId }
     });
+    console.log("cehck foll =>", votes);
     return count;
   }
 }
