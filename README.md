@@ -137,7 +137,7 @@ View the voting score for articles.
 - Chức năng follow:
 ![alt text](image/image-29.png)
 
--Chức năng  vote up/ vote dơn bài viết:
+- Chức năng  vote up/ vote dơn bài viết:
 ![alt text](image/image-30.png)
 
 ## Đối với Admin
