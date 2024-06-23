@@ -16,11 +16,11 @@ Install mySQL, nestjs, reactjs,XAMP...
 - Source Code Management: GitHub
 - Tool for Designing Object-Oriented Design and Analysis Diagrams: diagrams.net
 - Front-End Development:
--    Languages: HTML, CSS, JavaScript
--    Frameworks: React.js, SCSS
+-  + Languages: HTML, CSS, JavaScript
+-  + Frameworks: React.js, SCSS
 - Back-End Development:
--    Language: JavaScript
--    Framework: NestJS
+-  + Language: JavaScript
+-  + Framework: NestJS
 - Database Design Software: MySQL
 - Authentication and Authorization: JWT
 ## Usecase diagram
@@ -118,23 +118,23 @@ View the voting score for articles.
 - Xem bài viết
 ![alt text](image/image-23.png)
 
--Chức năng hiện thị bài viết của mình:
+- Chức năng hiện thị bài viết của mình:
 
 ![alt text](image/image-24.png)
 
 -Chức năng viết bài:
 ![alt text](image/image-25.png)
 
--Chức năng Update post:
+- Chức năng Update post:
 ![alt text](image/image-26.png)
 
--Chức năng delete post:
+- Chức năng delete post:
 ![alt text](image/image-27.png)
 
 - Chức năng comment:
 ![alt text](image/image-28.png)
 
--Chức năng follow:
+- Chức năng follow:
 ![alt text](image/image-29.png)
 
 -Chức năng  vote up/ vote dơn bài viết:
@@ -149,12 +149,12 @@ View the voting score for articles.
 
 - Chức năng xóa User:
 ![alt text](image/image-33.png)
-
--Chức năng add Post:
+ 
+- Chức năng add Post:
 ![alt text](image/image-34.png)
 
--Chức năng List Post:
+- Chức năng List Post:
 ![alt text](image/image-35.png)
 
--chức năng profile:
+- chức năng profile:
 ![alt text](image/image-36.png)
