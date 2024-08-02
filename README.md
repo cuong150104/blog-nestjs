@@ -108,61 +108,61 @@ View the voting score for articles.
 - Evaluation of the system's performance and user feedback.
 
 
-# Kịch bản 1 - Đăng nhập hệ thống
+# Kịch bản 1 - Sign in
 
 ![alt text](image/image-19.png)
 
-# Kich bản 2 - Giao diện người dùng
-## Giao Diện Client:
+# Kich bản 2 - User interface
+## Client Interface:
 ![alt text](image/image-20.png)
-## Giao diện cho Admin:
+## Admin Interface:
 ![alt text](image/image-21.png)
 
-# Kịch bản 3 - Chức năng Chi tiết
-## Đối với Client:
-- Xem bài viết
+# Kịch bản 3 -Detailed Functions
+## For Client:
+- View article
 ![alt text](image/image-23.png)
 
-- Chức năng hiện thị bài viết của mình:
+- Function to display my posts:
 
 ![alt text](image/image-24.png)
 
 -Chức năng viết bài:
 ![alt text](image/image-25.png)
 
-- Chức năng Update post:
+- Update post function:
 ![alt text](image/image-26.png)
 
-- Chức năng delete post:
+- Delete post function:
 ![alt text](image/image-27.png)
 
-- Chức năng update profile:
+- Profile update function:
 ![alt text](image/image-37.png)
 
-- Chức năng comment: 
+- Comment function: 
 ![alt text](image/image-28.png)
 
-- Chức năng follow:
+- Follow function:
 ![alt text](image/image-29.png)
 
-- Chức năng  vote up/ vote dơn bài viết:
+- Function to vote up/ down articles:
 ![alt text](image/image-30.png)
 
-## Đối với Admin
-- Chức năng thêm User:
+## For Admin
+- Add User function:
 ![alt text](image/image-31.png)
 
-- Chức năng List Users:
+- List Users function:
 ![alt text](image/image-32.png)
 
-- Chức năng xóa User:
+- Delete User function:
 ![alt text](image/image-33.png)
  
-- Chức năng add Post:
+- Add Post function:
 ![alt text](image/image-34.png)
 
-- Chức năng List Post:
+- List Post function:
 ![alt text](image/image-35.png)
 
-- chức năng profile:
+- Profile function:
 ![alt text](image/image-36.png)
