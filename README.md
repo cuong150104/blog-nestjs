@@ -1,4 +1,4 @@
-# Project Title: Xây dựng website Blog tương tự Viblo
+# Project Title: Build a Blog website similar to Viblo
 
 ### Purpose of the project
 The purpose of a web blog project similar to Viblo is to create a platform where users can share knowledge, insights, and experiences related to technology, programming, and software development, fostering a community of learning and collaboration among tech enthusiasts.
@@ -51,18 +51,12 @@ After cloning the project and opening the solution file, you will see the projec
 
 
 ## ALGORITHM ANALYSIS
-- Search and filtering algorithm
+-
 
 ## Features
 ### Login function
 - Admin/User enters login name and password, the system will check the database and then respond to admin/user.
-- If there is no account with the corresponding login name and password, the system will report an error of incorrect login name or password.
-### Search - booking function
-- For clients:
-   + Enter personal information, then the system will retrieve the data and display appropriate search results
-   + Client can click on the desired result to see detailed information
-   + Fill in personal information and press the "Book" button to reserve a room
-### Management function
+- If there is no account with the corresponding login name and password, the system will report an error of incorrect login name or password
 #### Admin Functions
 - User Registration and Login:
 
